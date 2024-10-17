@@ -1,0 +1,27 @@
+{% extends "base_lista.html" %}
+
+{% block title_head %}
+    Título modificado desde inicio
+{% endblock title_head %}
+
+{% block main %}
+<main>
+    <h1>Buscar Cliente</h1>
+    <form action="{% url 'lista' %}" method="GET">
+        <input type="text" name="nombre" placeholder="Buscar cliente por nombre" value="{{ request.GET.nombre }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados de búsqueda</h2>
+    <ul>
+        {% for cliente in clientes %}
+            <li>
+                <strong>Nombre:</strong> {{ cliente.nombre }}<br>
+                <strong>Apellido:</strong> {{ cliente.apellido }}<br>
+                <strong>Edad:</strong> {{ cliente.edad }}
+            </li>
+        {% empty %}
+            <p>No se encontraron clientes con ese nombre.</p>
+        {% endfor %}
+    </ul>
+{% endblock main %}
