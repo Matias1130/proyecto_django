@@ -12,7 +12,7 @@ Registrar Medicamento
 {% block main %}
 <main>
     <h1>Registrar Medicamento/Crema</h1>
-    <form action="{% url 'medicamentos:crear_medicamentos' %}" method="POST">
+    <form action="{% url 'medicamentos:crear_medicamento' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Registrar</button>
