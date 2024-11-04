@@ -1,0 +1,25 @@
+{% extends "base_registro.html" %}
+{% load static %}
+
+{% block title_head %}
+login
+{% endblock title_head %}
+
+
+{% block descripcion %}
+<h1>Inicio de sesion</h1>
+{% endblock descripcion %}
+
+
+{% block main %}
+<form action={% url "usuarios:login" %} method="POST">
+    {{form}}
+    {% csrf_token %}
+
+
+    <input  style="font-family:'monospace'; border-radius: 10px; background-color: #00bcd4; color: white; border: none; padding: 10px 20px; cursor: pointer;"  type="submit" value="Iniciar Sesion">
+
+
+
+</form>
+{% endblock main %}

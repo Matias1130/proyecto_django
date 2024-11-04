@@ -1,0 +1,22 @@
+{% extends "base_registro.html" %}
+
+{% block title_head %}
+Registrar Medicamento
+{% endblock title_head %}
+
+{% block descripcion %}
+<h1>Registro de Perfumes</h1>
+<span class="subheading">Seccion dedicada al registro de perfumes para nuestra base de datos.</span>
+{% endblock descripcion %}
+
+{% block main %}
+<main>
+    <h1>Registrar perfume</h1>
+    <form action="{% url 'medicamentos:crear_perfumes' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrar</button>
+    </form>
+
+</main>
+{% endblock main %}

@@ -18,7 +18,9 @@
             <li>
                 <strong>Nombre:</strong> {{ cliente.nombre }}<br>
                 <strong>Apellido:</strong> {{ cliente.apellido }}<br>
-                <strong>Edad:</strong> {{ cliente.edad }}
+                <a href={% url "ver_clientes" cliente.id %}>-Ver Detallado-</a><br>
+                <a href={% url "eliminar_cliente" cliente.id  %}>-Eliminar Cliente-</a><br>
+                <a href={% url "editar_cliente" cliente.id  %}>-Editar-</a>
             </li>
         {% empty %}
             <p>No se encontraron clientes con ese nombre.</p>

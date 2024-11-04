@@ -1,0 +1,19 @@
+{% extends "base_registro.html" %}
+{% load static %}
+
+{% block title_head %}
+Perfil Usuario
+{% endblock title_head %}
+
+
+{% block descripcion %}
+<h1>perfil de {{request.user.username}}</h1>
+{% endblock descripcion %}
+
+
+{% block main %}
+<p><strong>Nombre:</strong> {{ usuario.first_name }}</p>
+<p><strong>Apellido:</strong> {{ usuario.last_name }}</p>
+<p><strong>Email:</strong> {{ usuario.email }}</p>
+<p><strong>Biografía:</strong> {{ perfil.biografia }}</p>
+{% endblock main %}

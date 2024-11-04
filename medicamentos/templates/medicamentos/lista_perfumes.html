@@ -1,0 +1,32 @@
+{% extends "base_lista.html" %}
+
+{% block title_head %}
+    Listado Medicamentos
+{% endblock title_head %}
+{% block descripcion %}
+<h1>Lista de perfumes</h1>
+<span class="subheading">Lista de perfumes registrados , con su descripcion y precio (por unidad).</span>
+{% endblock descripcion %}
+
+{% block main %}
+<main>
+    <h1>Listado perfumeria</h1>
+    <ul>
+        {% for perfume in perfumes %}
+            <li>{{perfume}}
+                <li>
+                    <a href={% url "medicamentos:ver_perfumes" perfume.id %}>-Ver Detallado-</a><br>
+                </li>
+                <li>
+                    <a href={% url "medicamentos:editar_perfumes" perfume.id %}>-Editar-</a><br>
+                </li>
+                <li>
+                    <a href={% url "medicamentos:eliminar_perfume" perfume.id %}>-Eliminar-</a><br>
+                </li>
+            </li>
+        {% empty %}
+            <p>No se encontraron perfumes con ese nombre.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'medicamentos:crear_perfumes' %}">Registrar Perfume</a>
+{% endblock main %}

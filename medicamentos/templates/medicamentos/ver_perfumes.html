@@ -1,0 +1,17 @@
+{% extends "base_ver_clientes.html" %}
+
+{% block title_head %}
+    ver perfumes
+{% endblock title_head %}
+{%block descripcion%}
+<h1>Perfumes Detallados</h1>
+<span class="subheading">En esta seccion se encuentras los datos detallados de los perfumes registrados</span>
+{%endblock descripcion%}
+{% block main %}
+<ul>
+    <li>Marca: {{perfumes.marca}}</li>
+    <li>Descripcion: {{perfumes.descripcion}}</li>
+    <li>Genero: {{perfumes.genero}}</li>
+    <li>Precio: ${{perfumes.precio}}</li>
+</ul>
+{% endblock main %}

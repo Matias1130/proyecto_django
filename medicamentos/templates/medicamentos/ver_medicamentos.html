@@ -1,0 +1,16 @@
+{% extends "base_ver_clientes.html" %}
+
+{% block title_head %}
+    ver medicamentos
+{% endblock title_head %}
+{%block descripcion%}
+<h1>Medicamentos Detallados</h1>
+<span class="subheading">En esta seccion se encuentras los datos detallados de los medicamentos registrados</span>
+{%endblock descripcion%}
+{% block main %}
+<ul>
+    <li>Marca: {{medicamentos.marca}}</li>
+    <li>Descripcion: {{medicamentos.descripcion}}</li>
+    <li>Precio: ${{medicamentos.precio}}</li>
+</ul>
+{% endblock main %}

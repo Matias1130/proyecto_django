@@ -1,0 +1,22 @@
+{% extends "base_registro.html" %}
+
+{% block title_head %}
+Editar Perfumes
+{% endblock title_head %}
+
+{% block descripcion %}
+<h1>Edicion de datos (Perfumes)</h1>
+<span class="subheading">Editor de datos de los perfumes registrados.</span>
+{% endblock descripcion %}
+
+{% block main %}
+<main>
+    <h1>Registrar perfume</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+</main>
+{% endblock main %}

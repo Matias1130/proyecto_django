@@ -1,0 +1,22 @@
+{% extends "base_registro.html" %}
+
+{% block title_head %}
+Editar Medicamento
+{% endblock title_head %}
+
+{% block descripcion %}
+<h1>Editor de datos (Medicamentos)</h1>
+<span class="subheading">Editor de datos de los medicamentos registrados.</span>
+{% endblock descripcion %}
+
+{% block main %}
+<main>
+    <h1>Editar Medicamento/Crema</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+</main>
+{% endblock main %}

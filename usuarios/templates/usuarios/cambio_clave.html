@@ -1,0 +1,21 @@
+{% extends "base_registro.html" %}
+
+{% block title_head %}
+cambiar contraseña
+{% endblock title_head %}
+
+
+{% block descripcion %}
+<h1>Cambiar Contraseña de:</h1>
+<h2>{{request.user.username}}</h2>
+{% endblock descripcion %}
+
+
+{% block main %}
+<form method="POST"> 
+    {% csrf_token %}
+    {{ form.as_p }}  
+
+    <input style="font-family:'monospace'; border-radius: 10px; background-color: #00bcd4; color: white; border: none; padding: 10px 20px; cursor: pointer;" type="submit" value="Guardar Cambios">
+</form>
+{% endblock main %}

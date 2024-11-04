@@ -6,9 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        {% block title_head %}
         <title>
             inicio
         </title>
+        {% endblock title_head %}
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -32,6 +34,25 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'index'%}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'registro'%}">Registrar</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'lista'%}">Lista de registrados</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'medicamentos:listado_medicamentos'%}">Medicamentos</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'medicamentos:listado_perfumes'%}">Perfumes</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "usuarios:editar_perfil" %}>
+                            <img src={{request.user.datosextra.avatar.url}} heigth="20px"width="20px" >
+                            {{request.user.username}}
+                        </a></li>
+                        <form action={% url "usuarios:logout" %} method="POST">
+                            {% csrf_token %}
+                            <input style="border-radius: 10px; background-color: #00bcd4; color: white; border: none; padding: 10px 20px; cursor: pointer;" type="submit" value="Cerrar Sesion">
+                        </form>
+                        {% else %}
+                        <a href="{% url 'usuarios:login' %}" style="border-radius: 10px; background-color: #00bcd4; color: white; padding: 10px 20px; text-decoration: none;">
+                            Log In
+                        </a>
+                        <a href="{% url 'usuarios:registrarse' %}" style="width:105px;margin-left:15px; border-radius: 10px; background-color: #11bcd4; color: white;padding:10px; text-decoration: none;">
+                            Registrar Usuario
+                        </a>                 
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -41,15 +62,19 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Bienvenido al sistema de registro de clientes</h1>
+                            {% block h1_header %} 
+                            <h1>Bienvenido al sistema de registro de clientes y productos</h1>
+                            {% endblock h1_header %}
                         </div>
                     </div>
                 </div>
             </div>
         </header>
+        {% block main_base %}
         <main>
             <h2>Bienvenido a nuestro sistema de registro de clientes,en esta pagina podras mantener siempre en orden y guardados los datos mas importantes de tus clientes sin volverte loco,para comenzar a registrar por favor dirigite a las pestaña "Registro" o si queres consultar algun dato de un cliente ya registrado anda a la pestaña "Lista de registrados"</h2>
         </main>
+        {% endblock main_base %}
         <footer class="border-top">
                         <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
                     </div>

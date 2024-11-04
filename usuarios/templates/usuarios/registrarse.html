@@ -1,0 +1,25 @@
+{% extends "base_registro.html" %}
+{% load static %}
+
+{% block title_head %}
+registrarse
+{% endblock title_head %}
+
+
+{% block descripcion %}
+<h1>Registro de usuarios</h1>
+{% endblock descripcion %}
+
+
+{% block main %}
+<form action={% url "usuarios:registrarse" %} method="POST">
+    {{form}}
+    {% csrf_token %}
+
+
+    <input  style="margin-left:10px ; font-family:'monospace'; border-radius: 10px; background-color: #00bcd4; color: white; border: none; cursor: pointer;"  type="submit" value="Registrarse">
+
+
+
+</form>
+{% endblock main %}

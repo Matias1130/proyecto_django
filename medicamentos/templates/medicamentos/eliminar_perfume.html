@@ -1,0 +1,20 @@
+{% extends "base_registro.html" %}
+
+{% block title_head %}
+Eliminar Perfume
+{% endblock title_head %}
+
+{% block descripcion %}
+<h1>Eliminar perfume de la base de datos.</h1>
+{% endblock descripcion %}
+
+{% block main %}
+<main>
+    <h1>Eliminar perfume</h1>
+    <form action="{% url 'medicamentos:eliminar_perfume' perfume.id %}" method="POST">
+        {% csrf_token %}
+        <p>¿Realmente desea eliminar el perfume "{{ perfume }}"?</p>
+        <button type="submit">Eliminar</button>
+    </form>
+</main>
+{% endblock main %}

@@ -32,8 +32,27 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'index'%}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'registro'%}">Registro</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'lista'%}">Lista De Registrados</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'registro'%}">Registrar</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'lista'%}">Lista de registrados</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'medicamentos:listado_medicamentos'%}">Medicamentos</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'medicamentos:listado_perfumes'%}">Perfumes</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "usuarios:editar_perfil" %}>
+                            <img src={{request.user.datosextra.avatar.url}} heigth="20px"width="20px" >
+                            {{request.user.username}}
+                        </a></li>
+                        <form action={% url "usuarios:logout" %} method="POST">
+                            {% csrf_token %}
+                            <input style="border-radius: 10px; background-color: #00bcd4; color: white; border: none; padding: 10px 20px; cursor: pointer;" type="submit" value="Cerrar Sesion">
+                        </form>
+                        {% else %}
+                        <a href="{% url 'usuarios:login' %}" style="border-radius: 10px; background-color: #00bcd4; color: white; padding: 10px 20px; text-decoration: none;">
+                            Log In
+                        </a>
+                        <a href="{% url 'usuarios:registrarse' %}" style="width:105px;margin-left:15px; border-radius: 10px; background-color: #11bcd4; color: white;padding:10px; text-decoration: none;">
+                            Registrar Usuario
+                        </a>                 
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -44,8 +63,10 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
+                            {% block descripcion  %}
                             <h1>Registro de clientes</h1>
                             <span class="subheading">Coloque los datos en las celdas correspondientes</span>
+                            {% endblock descripcion  %}
                         </div>
                     </div>
                 </div>

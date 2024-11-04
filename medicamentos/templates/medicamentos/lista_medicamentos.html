@@ -1,0 +1,26 @@
+{% extends "base_lista.html" %}
+
+{% block title_head %}
+    Listado Medicamentos
+{% endblock title_head %}
+{% block descripcion %}
+<h1>Lista de medicamentos</h1>
+<span class="subheading">Lista de medicamentos registrados , con su descripcion y precio (por caja).</span>
+{% endblock descripcion %}
+
+{% block main %}
+<main>
+    <h1>Listado Medicamentos</h1>
+    <ul>
+        {% for medicamento in medicamentos %}
+            <li>{{medicamento}}
+                <a href="{% url 'medicamentos:ver_medicamentos' medicamento.id %}">-Ver Detallado-</a><br>
+                <a href="{% url 'medicamentos:editar_medicamentos' medicamento.pk %}">-Editar-</a>
+                <a href="{% url 'medicamentos:eliminar_medicamento' medicamento.pk %}">-Eliminar-</a>
+            </li>
+        {% empty %}
+            <p>No se encontraron medicamentos con ese nombre.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'medicamentos:crear_medicamento' %}">Registrar Medicamento</a>
+{% endblock main %}
